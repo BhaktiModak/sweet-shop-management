@@ -77,6 +77,57 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- JUnit 5 -->
+			<dependency>
+			    <groupId>org.junit.jupiter</groupId>
+			    <artifactId>junit-jupiter</artifactId>
+			    <version>5.10.0</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<!-- Mockito -->
+			<dependency>
+			    <groupId>org.mockito</groupId>
+			    <artifactId>mockito-core</artifactId>
+			    <version>5.7.0</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<!-- Mockito + JUnit 5 integration -->
+			<dependency>
+			    <groupId>org.mockito</groupId>
+			    <artifactId>mockito-junit-jupiter</artifactId>
+			    <version>5.7.0</version>
+			    <scope>test</scope>
+			</dependency>
+			
+			<!-- Spring Boot Test -->
+			<!-- JWT API -->
+			<dependency>
+			    <groupId>io.jsonwebtoken</groupId>
+			    <artifactId>jjwt-api</artifactId>
+			    <version>0.11.5</version>
+			</dependency>
+			
+			<!-- JWT Implementation -->
+			<dependency>
+			    <groupId>io.jsonwebtoken</groupId>
+			    <artifactId>jjwt-impl</artifactId>
+			    <version>0.11.5</version>
+			    <scope>runtime</scope>
+			</dependency>
+			
+			<!-- JWT JSON support -->
+			<dependency>
+			    <groupId>io.jsonwebtoken</groupId>
+			    <artifactId>jjwt-jackson</artifactId>
+			    <version>0.11.5</version>
+			    <scope>runtime</scope>
+			</dependency>
+
+
+
+
 	</dependencies>
 
 	<build>
