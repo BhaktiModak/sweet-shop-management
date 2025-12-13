@@ -10,5 +10,5 @@ public class RegisterRequest {
     private String username;
     private String email;
     private String password;
-    // optional: role is omitted here; default to USER in service
+    // No role field; default USER role is set in service
 }

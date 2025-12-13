@@ -7,7 +7,6 @@ import com.sweetshop.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,20 +26,21 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User savedUser = userService.registerUser(user);
+        return ResponseEntity.status(201).body(savedUser);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-
         User user = userService.findByEmail(request.getEmail());
-
         if (user == null || !passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             return ResponseEntity.status(401).body("Invalid email or password");
         }
-
         String token = jwtUtil.generateToken(user);
-
         Map<String, String> response = new HashMap<>();
         response.put("token", token);
-
         return ResponseEntity.ok(response);
     }
 }

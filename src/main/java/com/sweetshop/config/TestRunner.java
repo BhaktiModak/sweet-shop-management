@@ -15,16 +15,15 @@ public class TestRunner implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        if (userService.findByEmail("bhaktim@1234") == null) {
+    public void run(String... args) {
+        String email = "bhaktim@1234";
+        if (userService.findByEmail(email) == null) {
             User user = new User();
             user.setName("Bhakti");
-            user.setUsername("bhakti123");
-            user.setEmail("bhaktim@1234");
-            user.setPassword("1234");
+            user.setEmail(email);
+            user.setPassword("1234"); // will be encoded
             userService.registerUser(user);
+            System.out.println("Test user created: " + email);
         }
     }
-    
-
 }

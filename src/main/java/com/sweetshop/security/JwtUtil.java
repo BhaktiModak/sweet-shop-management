@@ -16,13 +16,12 @@ public class JwtUtil {
             "sweetshop_secret_key_sweetshop_secret_key_123456".getBytes()
     );
 
-    private final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
+    private final long EXPIRATION_TIME = 1000 * 60 * 60;
 
-    // Generate JWT token with email and role
     public String generateToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getEmail())
-                .claim("role", user.getRole().getName()) // "USER" or "ADMIN"
+                .claim("role", user.getRole().getName())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(key, SignatureAlgorithm.HS256)
