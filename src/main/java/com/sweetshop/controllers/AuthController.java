@@ -1,6 +1,7 @@
 package com.sweetshop.controllers;
 
 import com.sweetshop.dto.LoginRequest;
+import com.sweetshop.dto.RegisterRequest;
 import com.sweetshop.entities.User;
 import com.sweetshop.security.JwtUtil;
 import com.sweetshop.services.UserService;
@@ -27,10 +28,17 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+
+        User user = new User();
+        user.setName(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setPassword(request.getPassword());
+
         User savedUser = userService.registerUser(user);
         return ResponseEntity.status(201).body(savedUser);
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
